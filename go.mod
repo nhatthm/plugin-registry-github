@@ -11,7 +11,7 @@ require (
 	github.com/stretchr/testify v1.8.1
 	go.nhat.io/aferoassert v0.2.0
 	go.nhat.io/aferomock v0.4.0
-	go.nhat.io/httpmock v0.10.0
+	go.nhat.io/httpmock v0.11.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -29,6 +29,7 @@ require (
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	go.nhat.io/aferocopy/v2 v2.0.1 // indirect
 	go.nhat.io/matcher/v2 v2.0.0 // indirect
+	go.nhat.io/wait v0.1.0 // indirect
 	golang.org/x/crypto v0.6.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
 )
