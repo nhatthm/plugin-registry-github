@@ -29,7 +29,7 @@ var (
 	ErrMissingRepository = errors.New("missing github repository")
 )
 
-func init() { // nolint: gochecknoinits
+func init() { //nolint: gochecknoinits
 	RegisterInstaller()
 }
 
@@ -57,7 +57,7 @@ func (i *Installer) Install(ctx context.Context, dest, source string) (*plugin.P
 
 	owner, repository, version, err := parseURL(source)
 	if err != nil {
-		return nil, parseError(err, source)
+		return nil, parseError(err, source) //nolint: contextcheck
 	}
 
 	ctx = context.WithValue(ctx, contextKey("source"), source)
@@ -145,7 +145,7 @@ func (i *Installer) installPluginReleaseAsset(
 	}
 
 	defer func() {
-		_ = i.fs.RemoveAll(tmpDir) // nolint: errcheck
+		_ = i.fs.RemoveAll(tmpDir) //nolint: errcheck
 	}()
 
 	assetFile := filepath.Join(tmpDir, *asset.Name)

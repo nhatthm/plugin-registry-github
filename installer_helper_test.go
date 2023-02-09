@@ -30,8 +30,8 @@ func newFileFromSource(f afero.File, source string) afero.File {
 }
 
 func newFileWithData(f afero.File, data []byte) afero.File {
-	_, _ = f.Write(data)           // nolint: errcheck
-	_, _ = f.Seek(0, io.SeekStart) // nolint: errcheck
+	_, _ = f.Write(data)           //nolint: errcheck
+	_, _ = f.Seek(0, io.SeekStart) //nolint: errcheck
 
 	return f
 }
@@ -40,8 +40,7 @@ func newEmptyMetadataFile() afero.File {
 	return newEmptyFile(plugin.MetadataFile)
 }
 
-// nolint: unparam
-func newMetadataFile(source string) afero.File {
+func newMetadataFile(source string) afero.File { //nolint: unparam
 	return newShadowedFile(plugin.MetadataFile, source)
 }
 
@@ -84,8 +83,7 @@ func newReleaseWithArtifactAndContentType(tagName, fileName, contentType string)
 	return r
 }
 
-// nolint: unparam
-func newReleaseWithArtifactf(tagName string, format string, args ...interface{}) *goGitHub.RepositoryRelease {
+func newReleaseWithArtifactf(tagName string, format string, args ...interface{}) *goGitHub.RepositoryRelease { //nolint: unparam
 	return newReleaseWithArtifact(tagName, fmt.Sprintf(format, args...))
 }
 
@@ -95,7 +93,7 @@ func expectFileName(expect string) interface{} {
 	})
 }
 
-func expectFileNamef(format string, args ...interface{}) interface{} { // nolint: unparam
+func expectFileNamef(format string, args ...interface{}) interface{} { //nolint: unparam
 	return expectFileName(fmt.Sprintf(format, args...))
 }
 

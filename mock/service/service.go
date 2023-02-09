@@ -47,7 +47,7 @@ func (r *RepositoryService) DownloadContents(
 	}
 
 	if ret2 != nil {
-		resp = ret2.(*github.Response) // nolint: errcheck
+		resp = ret2.(*github.Response) //nolint: errcheck
 	}
 
 	return
@@ -65,11 +65,11 @@ func (r *RepositoryService) GetLatestRelease(
 	err = ret.Error(2)
 
 	if ret1 != nil {
-		release = ret1.(*github.RepositoryRelease) // nolint: errcheck
+		release = ret1.(*github.RepositoryRelease) //nolint: errcheck
 	}
 
 	if ret2 != nil {
-		resp = ret2.(*github.Response) // nolint: errcheck
+		resp = ret2.(*github.Response) //nolint: errcheck
 	}
 
 	return
@@ -87,11 +87,11 @@ func (r *RepositoryService) GetReleaseByTag(
 	err = ret.Error(2)
 
 	if ret1 != nil {
-		release = ret1.(*github.RepositoryRelease) // nolint: errcheck
+		release = ret1.(*github.RepositoryRelease) //nolint: errcheck
 	}
 
 	if ret2 != nil {
-		resp = ret2.(*github.Response) // nolint: errcheck
+		resp = ret2.(*github.Response) //nolint: errcheck
 	}
 
 	return
@@ -136,6 +136,7 @@ func mockRepositoryService(mocks ...func(s *RepositoryService)) *RepositoryServi
 }
 
 // MockRepositoryService creates RepositoryService mock with cleanup to ensure all the expectations are met.
+//
 //goland:noinspection GoNameStartsWithPackageName
 func MockRepositoryService(mocks ...func(s *RepositoryService)) RepositoryServiceMocker {
 	return func(tb testing.TB) *RepositoryService {

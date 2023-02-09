@@ -20,6 +20,10 @@ linters-settings:
 linters:
   enable-all: true
   disable:
+    - ireturn
+    - nonamedreturns
+    - exhaustruct
+    - varnamelen
     - exhaustivestruct
     - forbidigo
     - forcetypeassert
