@@ -16,19 +16,19 @@ import (
 var ErrArtifactNotFound = errors.New("artifact not found")
 
 func writeFile(fs afero.Fs, path string, r io.Reader) error {
-	f, err := fs.OpenFile(path, os.O_CREATE|os.O_RDWR, os.FileMode(0o644))
+	f, err := fs.OpenFile(path, os.O_CREATE|os.O_RDWR, os.FileMode(0o644)) //nolint: nosnakecase
 	if err != nil {
 		return err
 	}
 
-	defer f.Close() // nolint: errcheck
+	defer f.Close() //nolint: errcheck
 
 	if _, err := io.Copy(f, r); err != nil {
 		return err
 	}
 
 	if r, ok := r.(io.ReadCloser); ok {
-		_ = r.Close() // nolint: errcheck
+		_ = r.Close() //nolint: errcheck
 	}
 
 	return nil
@@ -44,7 +44,7 @@ func loadMetadata(r io.Reader) (*plugin.Plugin, error) {
 	}
 
 	if r, ok := r.(io.ReadCloser); ok {
-		_ = r.Close() // nolint: errcheck
+		_ = r.Close() //nolint: errcheck
 	}
 
 	return &p, nil

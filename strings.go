@@ -52,7 +52,7 @@ func stripHostname(url, hostname string) string {
 
 // isPlugin checks whether the given plugin URL is from github or not.
 func isPlugin(pluginURL string) bool {
-	_, _, _, err := parseURL(pluginURL) // nolint: dogsled
+	_, _, _, err := parseURL(pluginURL) //nolint: dogsled
 
 	return err == nil
 }

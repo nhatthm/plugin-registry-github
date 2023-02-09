@@ -10,18 +10,18 @@ import (
 	"testing"
 
 	goGitHub "github.com/google/go-github/v35/github"
-	"github.com/nhatthm/aferomock"
 	"github.com/nhatthm/plugin-registry/installer"
 	"github.com/nhatthm/plugin-registry/plugin"
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"go.nhat.io/aferomock"
 
 	github "github.com/nhatthm/plugin-registry-github"
 	"github.com/nhatthm/plugin-registry-github/mock/service"
 )
 
-func TestInstaller_Install(t *testing.T) {
+func TestInstaller_Install(t *testing.T) { //nolint: maintidx
 	t.Parallel()
 
 	installer.Register("fail", func(_ context.Context, source string) bool {
@@ -181,7 +181,7 @@ func TestInstaller_Install(t *testing.T) {
 
 				fs.On("OpenFile",
 					expectFileNamef("my-plugin-1.4.2-%s-%s.tar.gz", runtime.GOOS, runtime.GOARCH),
-					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(nil, errors.New("open error"))
 
 				fs.On("RemoveAll", mock.Anything).Return(nil)
@@ -210,7 +210,7 @@ func TestInstaller_Install(t *testing.T) {
 
 				fs.On("OpenFile",
 					expectFileNamef("my-plugin-1.4.2-%s-%s.tar.gz", runtime.GOOS, runtime.GOARCH),
-					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile("my-plugin.tar.gz"), nil)
 
 				fs.On("RemoveAll", mock.Anything).Return(nil)
@@ -226,7 +226,7 @@ func TestInstaller_Install(t *testing.T) {
 					Return(newMetadataFile("resources/fixtures/.plugin.registry.yaml"), nil, nil)
 
 				asset := newEmptyFile("my-plugin.tar.gz")
-				_ = asset.Close() // nolint: errcheck
+				_ = asset.Close() //nolint: errcheck
 
 				s.On("DownloadReleaseAsset", mock.Anything, "owner", "my-plugin", int64(42), http.DefaultClient).
 					Return(asset, "", nil)
@@ -242,7 +242,7 @@ func TestInstaller_Install(t *testing.T) {
 
 				fs.On("OpenFile",
 					expectFileNamef("my-plugin-1.4.2-%s-%s.tar.gz", runtime.GOOS, runtime.GOARCH),
-					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile("my-plugin.tar.gz"), nil)
 
 				fs.On("Chmod",
@@ -277,14 +277,14 @@ func TestInstaller_Install(t *testing.T) {
 
 				fs.On("OpenFile",
 					expectFileNamef("my-plugin-1.4.2-%s-%s.tar.gz", runtime.GOOS, runtime.GOARCH),
-					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile("my-plugin.tar.gz"), nil)
 
 				metadataFile := newEmptyFile(".plugin.registry.yaml")
-				_ = metadataFile.Close() // nolint: errcheck
+				_ = metadataFile.Close() //nolint: errcheck
 
 				fs.On("OpenFile",
-					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(metadataFile, nil)
 
 				fs.On("RemoveAll", mock.Anything).Return(nil)
@@ -312,11 +312,11 @@ func TestInstaller_Install(t *testing.T) {
 					Return(nil)
 
 				fs.On("OpenFile",
-					expectFileName("my-plugin.7z"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					expectFileName("my-plugin.7z"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile("my-plugin.7z"), nil)
 
 				fs.On("OpenFile",
-					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile(".plugin.registry.yaml"), nil)
 
 				fs.On("Stat", expectFileName("my-plugin.7z")).
@@ -357,11 +357,11 @@ artifacts:
 					Return(nil)
 
 				fs.On("OpenFile",
-					expectFileName("my-plugin.fail"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					expectFileName("my-plugin.fail"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile("my-plugin.fail"), nil)
 
 				fs.On("OpenFile",
-					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile(".plugin.registry.yaml"), nil)
 
 				fs.On("Stat", expectFileName("my-plugin.fail")).Maybe().
@@ -402,11 +402,11 @@ artifacts:
 					Return(nil)
 
 				fs.On("OpenFile",
-					expectFileName("my-plugin.success"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					expectFileName("my-plugin.success"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile("my-plugin.success"), nil)
 
 				fs.On("OpenFile",
-					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)).
+					expectFileName(".plugin.registry.yaml"), os.O_CREATE|os.O_RDWR, os.FileMode(0o644)). //nolint: nosnakecase
 					Return(newEmptyFile(".plugin.registry.yaml"), nil)
 
 				fs.On("Stat", expectFileName("my-plugin.success")).Maybe().

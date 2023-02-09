@@ -10,14 +10,14 @@ import (
 	"testing"
 
 	goGitHub "github.com/google/go-github/v35/github"
-	"github.com/nhatthm/aferoassert"
-	"github.com/nhatthm/httpmock"
 	fsCtx "github.com/nhatthm/plugin-registry/context"
 	"github.com/nhatthm/plugin-registry/installer"
 	"github.com/nhatthm/plugin-registry/plugin"
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"go.nhat.io/aferoassert"
+	"go.nhat.io/httpmock"
 	"gopkg.in/yaml.v3"
 
 	github "github.com/nhatthm/plugin-registry-github"
