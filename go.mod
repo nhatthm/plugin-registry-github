@@ -7,7 +7,7 @@ require (
 	github.com/google/go-github/v35 v35.3.0
 	github.com/nhatthm/plugin-registry v0.3.0
 	github.com/nhatthm/plugin-registry-fs v0.3.0
-	github.com/spf13/afero v1.9.5
+	github.com/spf13/afero v1.11.0
 	github.com/stretchr/testify v1.8.4
 	go.nhat.io/aferoassert v0.2.0
 	go.nhat.io/aferomock v0.4.0
@@ -30,6 +30,6 @@ require (
 	go.nhat.io/aferocopy/v2 v2.0.1 // indirect
 	go.nhat.io/matcher/v2 v2.0.0 // indirect
 	go.nhat.io/wait v0.1.0 // indirect
-	golang.org/x/crypto v0.6.0 // indirect
-	golang.org/x/text v0.7.0 // indirect
+	golang.org/x/crypto v0.16.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
 )
