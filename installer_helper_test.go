@@ -48,7 +48,7 @@ func newMetadataFileFromString(data string) afero.File {
 	return newFileWithData(newEmptyMetadataFile(), []byte(data))
 }
 
-func newMetadataFileFromStringf(format string, args ...interface{}) afero.File {
+func newMetadataFileFromStringf(format string, args ...any) afero.File {
 	return newMetadataFileFromString(fmt.Sprintf(format, args...))
 }
 
@@ -83,17 +83,17 @@ func newReleaseWithArtifactAndContentType(tagName, fileName, contentType string)
 	return r
 }
 
-func newReleaseWithArtifactf(tagName string, format string, args ...interface{}) *goGitHub.RepositoryRelease { //nolint: unparam
+func newReleaseWithArtifactf(tagName string, format string, args ...any) *goGitHub.RepositoryRelease { //nolint: unparam
 	return newReleaseWithArtifact(tagName, fmt.Sprintf(format, args...))
 }
 
-func expectFileName(expect string) interface{} {
+func expectFileName(expect string) any {
 	return mock.MatchedBy(func(actual string) bool {
 		return filepath.Base(filepath.Clean(actual)) == expect
 	})
 }
 
-func expectFileNamef(format string, args ...interface{}) interface{} { //nolint: unparam
+func expectFileNamef(format string, args ...any) any { //nolint: unparam
 	return expectFileName(fmt.Sprintf(format, args...))
 }
 
@@ -105,6 +105,6 @@ func stringPtr(i string) *string {
 	return &i
 }
 
-func stringPtrf(format string, args ...interface{}) *string {
+func stringPtrf(format string, args ...any) *string {
 	return stringPtr(fmt.Sprintf(format, args...))
 }

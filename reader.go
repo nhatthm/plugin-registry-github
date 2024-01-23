@@ -9,7 +9,7 @@ import (
 
 type yamlReader struct {
 	buffer *bytes.Buffer
-	value  interface{}
+	value  any
 }
 
 // Read satisfies io.Reader.
@@ -31,7 +31,7 @@ func (r *yamlReader) Read(p []byte) (n int, err error) {
 	return r.buffer.Read(p)
 }
 
-func newYamlReader(v interface{}) *yamlReader {
+func newYamlReader(v any) *yamlReader {
 	return &yamlReader{
 		buffer: new(bytes.Buffer),
 		value:  v,

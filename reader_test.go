@@ -10,7 +10,7 @@ import (
 
 type data struct{}
 
-func (d data) MarshalYAML() (interface{}, error) {
+func (d data) MarshalYAML() (any, error) {
 	return nil, errors.New("marshal error")
 }
 
