@@ -11,7 +11,7 @@ An installer for [plugin-registry](https://github.com/nhatthm/plugin-registry)
 
 ## Prerequisites
 
-- `Go >= 1.16`
+- `Go >= 1.18`
 
 ## Install
 
