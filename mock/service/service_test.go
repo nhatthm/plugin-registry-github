@@ -4,16 +4,16 @@ import (
 	"context"
 	"errors"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strings"
 	"testing"
 
 	"github.com/google/go-github/v35/github"
-	"github.com/nhatthm/plugin-registry-github/mock/service"
 	"github.com/spf13/afero"
 	"github.com/spf13/afero/mem"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/nhatthm/plugin-registry-github/mock/service"
 )
 
 func newMetadataFile() afero.File {
@@ -47,7 +47,7 @@ func TestDownloadContents(t *testing.T) {
 				s.On("DownloadContents", context.Background(), "owner", "repo", ".plugin.registry.yaml", opt).
 					Return(strings.NewReader(`hello`), nil, nil)
 			}),
-			expectedReader: ioutil.NopCloser(strings.NewReader(`hello`)),
+			expectedReader: io.NopCloser(strings.NewReader(`hello`)),
 		},
 		{
 			scenario: "response is not nil",
@@ -228,7 +228,7 @@ func TestDownloadReleaseAsset(t *testing.T) {
 				s.On("DownloadReleaseAsset", context.Background(), "owner", "repo", int64(42), http.DefaultClient).
 					Return(strings.NewReader(`hello`), "", nil)
 			}),
-			expectedReader: ioutil.NopCloser(strings.NewReader(`hello`)),
+			expectedReader: io.NopCloser(strings.NewReader(`hello`)),
 		},
 		{
 			scenario: "redirect url is not empty",

@@ -3,7 +3,6 @@ package service
 import (
 	"context"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"testing"
 
@@ -43,7 +42,7 @@ func (r *RepositoryService) DownloadContents(
 		rdr = ret1
 
 	default:
-		rdr = ioutil.NopCloser(ret1.(io.Reader))
+		rdr = io.NopCloser(ret1.(io.Reader))
 	}
 
 	if ret2 != nil {
@@ -118,7 +117,7 @@ func (r *RepositoryService) DownloadReleaseAsset(
 		rdr = ret1
 
 	default:
-		rdr = ioutil.NopCloser(ret1.(io.Reader))
+		rdr = io.NopCloser(ret1.(io.Reader))
 	}
 
 	return

@@ -234,7 +234,7 @@ func WithBaseURL(url *url.URL) Option {
 // RegisterInstaller registers the installer.
 func RegisterInstaller(options ...Option) {
 	installer.Register(githubHostname,
-		func(ctx context.Context, pluginURL string) bool {
+		func(_ context.Context, pluginURL string) bool {
 			return isPlugin(pluginURL)
 		},
 		func(fs afero.Fs) installer.Installer {

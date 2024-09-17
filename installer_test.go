@@ -320,10 +320,10 @@ func TestInstaller_Install(t *testing.T) { //nolint: maintidx
 					Return(newEmptyFile(".plugin.registry.yaml"), nil)
 
 				fs.On("Stat", expectFileName("my-plugin.7z")).
-					Return(aferomock.NewFileInfo(func(i *aferomock.FileInfo) {
-						i.On("IsDir").Return(false)
-						i.On("Name").Return("my-plugin.7z")
-					}), nil)
+					Return(aferomock.FileInfoCallbacks{
+						IsDirFunc: func() bool { return false },
+						NameFunc:  func() string { return "my-plugin.7z" },
+					}, nil)
 
 				fs.On("RemoveAll", mock.Anything).Return(nil)
 			}),
@@ -365,10 +365,10 @@ artifacts:
 					Return(newEmptyFile(".plugin.registry.yaml"), nil)
 
 				fs.On("Stat", expectFileName("my-plugin.fail")).Maybe().
-					Return(aferomock.NewFileInfo(func(i *aferomock.FileInfo) {
-						i.On("IsDir").Return(false)
-						i.On("Name").Return("my-plugin.fail")
-					}), nil)
+					Return(aferomock.FileInfoCallbacks{
+						IsDirFunc: func() bool { return false },
+						NameFunc:  func() string { return "my-plugin.fail" },
+					}, nil)
 
 				fs.On("RemoveAll", mock.Anything).Return(nil)
 			}),
@@ -410,10 +410,10 @@ artifacts:
 					Return(newEmptyFile(".plugin.registry.yaml"), nil)
 
 				fs.On("Stat", expectFileName("my-plugin.success")).Maybe().
-					Return(aferomock.NewFileInfo(func(i *aferomock.FileInfo) {
-						i.On("IsDir").Return(false)
-						i.On("Name").Return("my-plugin.success")
-					}), nil)
+					Return(aferomock.FileInfoCallbacks{
+						IsDirFunc: func() bool { return false },
+						NameFunc:  func() string { return "my-plugin.success" },
+					}, nil)
 
 				fs.On("RemoveAll", mock.Anything).Return(nil)
 			}),
