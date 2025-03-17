@@ -1,16 +1,17 @@
 module github.com/nhatthm/plugin-registry-github
 
 go 1.18
+toolchain go1.24.1
 
 require (
 	github.com/bool64/ctxd v1.2.1
 	github.com/google/go-github/v35 v35.3.0
 	github.com/nhatthm/plugin-registry v0.4.0
 	github.com/nhatthm/plugin-registry-fs v0.4.0
-	github.com/spf13/afero v1.11.0
+	github.com/spf13/afero v1.14.0
 	github.com/stretchr/testify v1.10.0
 	go.nhat.io/aferoassert v0.3.0
-	go.nhat.io/aferomock v0.7.0
+	go.nhat.io/aferomock v0.8.0
 	go.nhat.io/httpmock v0.11.0
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -33,5 +34,5 @@ require (
 	go.nhat.io/matcher/v2 v2.0.0 // indirect
 	go.nhat.io/wait v0.1.0 // indirect
 	golang.org/x/crypto v0.27.0 // indirect
-	golang.org/x/text v0.18.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 )
